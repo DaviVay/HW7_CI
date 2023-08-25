@@ -1,6 +1,7 @@
 import org.example.hw7.ci.services.StatisticsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.AbstractCharInputReader;
 
 public class StatisticsServiceTest {
 
@@ -10,6 +11,18 @@ public class StatisticsServiceTest {
 
         long[] incomesInBillions = {12, 5, 8, 4, 5, 3, 8, 6, 11, 11, 12};
         long expected = 12;
+
+        long actual = service.findMax(incomesInBillions);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void findMaxIfEquals() {
+        StatisticsService service = new StatisticsService();
+
+        long[] incomesInBillions = {12, 5, 8, 4, 5, 3, 8, 6, 99, 11, 12};
+        long expected = 99;
 
         long actual = service.findMax(incomesInBillions);
 
